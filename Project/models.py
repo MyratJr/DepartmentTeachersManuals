@@ -28,7 +28,7 @@ class Auditorium(models.Model):
     def __str__(self):
         return str(self.name)
 
-class UserProfile(models.Model):
+class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     teacher_image=models.ImageField(upload_to="images")
     degree=models.ForeignKey(Degree,on_delete=models.CASCADE,related_name="Degree_for_teachers")
@@ -40,7 +40,7 @@ class UserProfile(models.Model):
         return str(self.user)
 
 class Daily(models.Model):
-    property=models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+    property=models.ForeignKey(Teacher,on_delete=models.CASCADE)
     group=models.ForeignKey(Group,on_delete=models.CASCADE,related_name="Groups_for_teachers_lecture")
     lecture=models.ForeignKey(Lecture,on_delete=models.CASCADE,related_name="Lectures_for_teachers_lecture")
     auditorium=models.ForeignKey(Auditorium,on_delete=models.CASCADE,related_name="Auditoriums_for_teachers_lecture")

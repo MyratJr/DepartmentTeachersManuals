@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.core.exceptions import ValidationError
+from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
+from django.contrib.auth.models import User, Group as UserGroup
 from .models import *
 
 class PropertyImageInline(admin.StackedInline):
@@ -13,10 +14,22 @@ class PropertyAdmin(admin.ModelAdmin):
         if Daily.objects.count() >= 6:
             messages.error(request,'Cannot add more than 6 Daily objects')
     class Meta:
-        model=UserProfile
+        model=Teacher
 
-admin.site.register(UserProfile,PropertyAdmin)
+class CustomUserAdmin(UserAdmin):
+    list_filter=()
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',)}),
+        (('Important dates'), {'fields': ['date_joined']}),
+    )
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
+admin.site.register(Teacher,PropertyAdmin)
 admin.site.register(Lecture)
 admin.site.register(Degree)
 admin.site.register(Auditorium)
 admin.site.register(Group)
+admin.site.unregister(UserGroup)
