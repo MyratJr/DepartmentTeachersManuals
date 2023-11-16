@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" media="all" />
 </head>
 
@@ -38,115 +38,10 @@
 			<nav class="navbar navbar-expand-lg ">
 				<div class="container">
 					<a class="navbar-brand sticky_logo" href="index.html">
-						<img class="main" src="img/Logo.png" srcset="img/Logo.png 2x" alt="logo" width="100px">
-						<img class="sticky" src="img/Logo.png" srcset="img/Logo.png 2x" alt="logo"
-							width="100px">
+						<img class="main" src="{% static 'img/Logo1.png' %}" alt="logo" width="70px">
+						<img class="sticky" src="{% static 'img/Logo1.png' %}" alt="logo" width="70px">
 					</a>
-					<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="menu_toggle">
-							<span class="hamburger">
-								<span></span>
-								<span></span>
-								<span></span>
-							</span>
-							<span class="hamburger-cross">
-								<span></span>
-								<span></span>
-							</span>
-						</span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav menu ms-auto">
-							<li class="nav-item dropdown submenu ">
-								<a href="#" class="nav-link dropdown-toggle active" role="button"
-									data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Onumler</a>
-								<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true"
-									data-bs-toggle="dropdown"></i>
-								<ul class="dropdown-menu">
-									<li class="nav-item "><a href="savings.html" class="nav-link">Goshmacha tygshytlamalar</a>
-									</li>
-									<li class="nav-item"><a href="flex.html" class="nav-link ">Goshmacha goterim</a>
-									</li>
-									<li class="nav-item"><a href="lock.html" class="nav-link ">Goshmacha gulp</a>
-									</li>
-									<li class="nav-item"><a href="invest.html" class="nav-link active">Maya goyum</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-item dropdown submenu">
-								<a class="nav-link dropdown-toggle" href="#" role="button"
-									data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Kompaniya
-								</a>
-								<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-									data-bs-toggle="dropdown"></i>
-
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="about.html">Biz barada</a></li>
-									<li class="nav-item"><a class="nav-link" href="blog-details.html">Blog</a></li>
-									<!--<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-											data-bs-toggle="dropdown"></i>
-
-										<ul class="dropdown-menu">
-											<li class="nav-item"><a class="nav-link" href="loan-details.html">Step
-													01</a></li>
-											<li class="nav-item"><a class="nav-link" href="personal-details.html">Step
-													02</a></li>
-											<li class="nav-item"><a class="nav-link" href="document-upload.html">Step
-													03</a></li>
-
-										</ul>-->
-
-
-								</ul>
-							</li>
-							<li class="nav-item dropdown submenu">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">
-									Goldamak
-								</a>
-								<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-									data-bs-toggle="dropdown"></i>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="faq.html">Mayadar</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.html">Biz bilen habarlashyn</a>
-									</li>
-									<!--<li class="nav-item"><a class="nav-link" href="job-application.html">Job
-											Application</a>
-									</li>-->
-								</ul>
-							</li>
-							<!--<li class="nav-item dropdown submenu">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">
-									Pages
-								</a>
-								<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-									data-bs-toggle="dropdown"></i>
-								<ul class="dropdown-menu ">
-									<li class="nav-item"><a class="nav-link" href="card.html">Cards</a></li>
-									<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-									<li class="nav-item"><a class="nav-link" href="error.html">404 Error</a></li>
-								</ul>
-							</li>
-							<li class="nav-item dropdown submenu">
-								<a class="nav-link dropdown-toggle" href="blog.html" role="button"
-									data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Blog
-								</a>
-								<i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
-									data-bs-toggle="dropdown"></i>
-								<ul class="dropdown-menu ">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Blog Listing</a></li>
-									<li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a>
-									</li>
-								</ul>
-							</li>-->
-						</ul>
+						<ul class="navbar-nav menu ms-auto"></ul>
 						<a class="theme-btn theme-btn-rounded-2" href="log_in.html">Icheri gir</a>
 						<a class="theme-btn theme-btn-rounded-2" href="new_account.html" style="margin-left:20px;">Hasap doret</a>
 					</div>
@@ -160,54 +55,15 @@
 	<main>
 
 		<!-- banner section -->
-		<section class="banner-area" id="banner_animation">
-			<section class="banner-area-3" id="banner_animation2">
-				<div class="bg-slides">
-					<div class="slide" data-parallax='{"x": 220, "y": 0, "rotateZ":0}'>
-						<img class="wow slideInRight" data-wow-delay='0.2s' src="img/slide-shape-1.png" alt="img">
-					</div>
-					<div class="slide" data-parallax='{"x": 270, "y": 0, "rotateZ":0}'>
-	
-						<img class="wow slideInRight" data-wow-delay='0.6s' src="img/slide-shape-2.png" alt="img">
-					</div>
-					<div class="slide" data-parallax='{"x": 330, "y": 0, "rotateZ":0}'>
-	
-						<img class="wow slideInRight" data-wow-delay='1.3s' src="img/slide-shape-3.png" alt="img">
-					</div>
-				</div>
-				<!--<div class="container">
-					<div class="row align-items-end">
-						<div class="col-lg-7 pt-100 pt-lg-200 pb-lg-200 pb-100">
-							<div class="banner-content pb-20 pt-20">
-	
-								<h1 class="wow fadeInUp" data-wow-delay="0.1s">Compare Loans From Several Banks Find The
-									Cheapest Loan</h1>
-	
-								<a href="loan.html"
-									class="wow fadeInUp mt-50 theme-btn theme-btn-rounded-2 theme-btn-lg theme-btn-alt"
-									data-wow-delay="0.3s">Apply Now
-									<i class="arrow_right"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-5 d-none d-lg-block position-relative">
-							<img class="person-img " src="img/banner/person-2.png" alt="">
-						</div>
-					</div>
-				</div>-->
+		<section class="" id="banner_animation">
+			<section class="banner-area-3" style="margin-bottom:20vh">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-10 mx-auto">
-							<div class="banner-content text-center pt-200">
-								<h1>Ansat we tolegsiz bank ishi<br> Hemmekishi uchin</h1>
-								<div class="img-area mt-35">
-									<img class="img-fluid" data-depth="0.6" src="img/person.png" alt="person">
-								</div>
-	
-								<div class="symbol-pulse">
-									<div class="pulse-1"></div>
-									<!--<div class="pulse-2"></div>-->
-									<div class="pulse-x"></div>
-								</div>
+							<div class="pt-200">
+								<img  style="float:left" src="{% static 'img/coo.png' %}" width="200px">
+										<div class="statistics-widget-1 text-start pt-10 two" style="margin-top: 5px;">
+								<p style="float:right" class="counter">This is some text that will appear after the image.</p></div>
 							</div>
 						</div>
 					</div>
@@ -218,7 +74,7 @@
 				<div class="container">
 					<div class="row position-relative">
 						<div class="col-12">
-							<div class="floated-widget">
+							<div class="floated-widget" style="margin-top:10vh">
 								<div class="row text-center gy-2 gy-lg-0">
 									<div class="col-lg-3 col-6">
 										<div class="statistics-widget-1 text-start pt-10">
