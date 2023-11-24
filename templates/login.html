@@ -1,0 +1,30 @@
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bet.css' %}" media="all" />
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" media="all" />
+        {% include "navbar.html" %}
+<div class="body">
+		<div class="veen" style="margin-top:10%;margin-bottom:4%">
+			<div class="rgstr-btn splits">
+				<p><img src="{% static 'img/3d-render-online-education-survey-test-concept.jpg' %}" width="550" style="float:right"></p>
+			</div>
+			<div class="wrapper">
+				<form id="login" method="POST" tabindex="500">
+                    {% csrf_token %}            
+					<h3 style="color:goldenrod">Içeri giriň</h3>
+					<div>
+						<input type="mail"  class="form-control" name="name">
+						<label>Ulanyjy at</label>
+					</div>
+					<div class="">
+						<input type="password" class="form-control" name="password">
+						<label>Açar söz</label>
+					</div>
+					<div>
+						<button class="dark">Içeri gir</button>
+					</div>
+				</form>
+			</div>
+		</div>	
+	</div>
+
