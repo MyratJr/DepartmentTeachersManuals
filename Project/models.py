@@ -33,11 +33,15 @@ class Teacher(models.Model):
     teacher_image=models.ImageField(upload_to="images")
     degree=models.ForeignKey(Degree,on_delete=models.CASCADE,related_name="Degree_for_teachers")
     lectures=models.ManyToManyField(Lecture)
-    video=models.FileField(upload_to="videos")
     manuals=models.FileField(upload_to="manuals")
 
     def __str__(self):
         return str(self.user)
+
+class Video(models.Model):
+    property=models.ForeignKey(Teacher,on_delete=models.CASCADE)
+    video=models.FileField(upload_to="videos")
+
 
 class Daily(models.Model):
     property=models.ForeignKey(Teacher,on_delete=models.CASCADE)

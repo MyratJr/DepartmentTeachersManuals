@@ -4,15 +4,20 @@ from django.contrib import admin
 from django.contrib.auth.models import User, Group as UserGroup
 from .models import *
 
-class PropertyImageInline(admin.StackedInline):
+class PropertyDailyInline(admin.StackedInline):
     model = Daily
+    max_num = 6
+    min_num = 6
+
+    class Meta:
+        model=Teacher
+
+class PropertyVideoInline(admin.StackedInline):
+    model = Video
 
 class PropertyAdmin(admin.ModelAdmin):
-    inlines = [ PropertyImageInline ]
-    def save_model(self, request, obj, form, change):
-        super().save_model(request, obj, form, change)
-        if Daily.objects.count() >= 6:
-            messages.error(request,'Cannot add more than 6 Daily objects')
+    inlines = [PropertyDailyInline,PropertyVideoInline]
+
     class Meta:
         model=Teacher
 
