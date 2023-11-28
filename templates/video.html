@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Maya goyum Banky</title>
+	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/card.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ckin.css' %}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" media="all" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="ctn-preloader" class="ctn-preloader">
+			<div class="round_spinner">
+				<div class="spinner"></div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- Header -->
+	<script>
+	const icon = document.querySelector('.flip-icon');
+
+icon.addEventListener('click', () => {
+  icon.style.transform = 'rotateY(180deg)';
+
+  setTimeout(() => {
+    icon.style.transform = 'none';
+  }, 500);
+});
+	</script>
+        {% include "navbar.html" %}
+        <main>
+        <style>
+        
+        </style>
+    <section class="demo-section demo-section--light" id="demo">
+        <div class="container">
+            <h2 class="title heading">Custom HTML5 Video Player with Ckins...</h2>
+            <video poster="ckin.jpg" src="{{video_open.video.url}}" data-ckin="default" data-overlay="1"></video>
+            <p class="tr">Demo video by
+                <a href="https://vimeo.com/lumatic" target="_blank">Lumatic</a>
+            </p>
+        </div>
+    </section>
+    <script src="dist/js/ckin.js"></script>
+        </main>
+	<!-- footer -->
+	<footer class="footer footer-1" id="footer">
+		<div class="footer-top  pt-25 pb-3">
+			<div class="flog wow fadeInUp pb-10">
+				<a href="https://etut.edu.tm/"><img src="{% static 'img/Logo1.png' %}" class="flip-icon" alt="logo" width="100px"></a>
+			</div>
+			<div class="copyright wow fadeInUp" data-wow-delay="0.1s">
+				<p>Titu, Turkmenistan.</p>
+			</div>
+			<div class="footer-text wow fadeInUp" data-wow-delay="0.5s">
+				<p>Sosial media programmalarymyza eýeriň:</p>
+			</div>
+			<div class="social-icon pt-10 wow fadeInUp" data-wow-delay="0.8s">
+				<a href="https://etut.edu.tm/" id="fb"><i class="bi bi-globe"></i></a>
+				<a href="mailto:oguzhan.edu.tm@gmail.com"><i class="bi bi-envelope"></i></a>
+				<a href="https://en.wikipedia.org/wiki/Oguzhan_University_of_Engineering_Technologies"><i class="bi bi-wikipedia"></i></a>
+			</div>
+			<div class="footer-text wow fadeInUp" style="margin-top:2vh" data-wow-delay="0.5s">
+				<p>100 Köşi Köçe, Aşgabat şäher, Türkmenistan</p>
+			</div>
+		</div>			
+		<!-- copyright area -->
+		<div class="copyright pt-2 pb-3" id="copy" style="background-color:#212529">
+			<p>Awtorlyk hukugy; 2023. Titu, Turkmenistan.</p>
+		</div>
+	</footer>
+	<!-- footer end -->
+
+	<!-- Back to top button -->
+	<a id="back-to-top" title="Back to Top"></a>
+</body>
+</html>

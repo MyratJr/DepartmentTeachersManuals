@@ -8,13 +8,14 @@ SECRET_KEY=os.environ.get("SECRET_KEY")
 DEBUG = True
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 INSTALLED_APPS = [
-    'Project',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'Project',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -25,6 +26,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = "users.User"
+
 ROOT_URLCONF = 'Diplom.urls'
 TEMPLATES = [
     {

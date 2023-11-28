@@ -94,7 +94,7 @@ icon.addEventListener('click', () => {
 								<!-- ================= -->
 								<div class="border">
 									<div class="frame">
-									<img class="image" src="{% static 'img/attractive-modern-young-business-woman-with-clipboard.jpg' %}"  width="175" height="233">
+									<img class="image" src="{{mugallym.teacher_image.url}}"  width="175" height="233">
 								</div>
 								</div>
 									<div class="skills__content">
@@ -106,7 +106,7 @@ icon.addEventListener('click', () => {
 												<div class="skills__data">
 													<i class="bx bxs-badge-check"></i>
 													<div>
-														<h3 class="skills__name qwerty2">Begm yradow Myrat geldi</h3>
+														<h3 class="skills__name qwerty2">{{mugallym.ady_fam}}</h3>
 													</div>
 												</div>
 											</div>
@@ -122,7 +122,7 @@ icon.addEventListener('click', () => {
 												<div class="skills__data">
 													<i class="bx bxs-badge-check"></i>
 													<div>
-														<h3 class="skills__name qwerty2">Kandidat</h3>
+														<h3 class="skills__name qwerty2">{{mugallym.degree}}</h3>
 													</div>
 												</div>
 											</div>
@@ -139,7 +139,7 @@ icon.addEventListener('click', () => {
 												<div class="skills__data">
 													<i class="bx bxs-badge-check"></i>
 													<div>
-														<h3 class="skills__name qwerty2">Kompýuter ylymlary we maglumat tehnologiýalary</h3>
+														<h3 class="skills__name qwerty2">{{mugallym.department}}</h3>
 													</div>
 												</div>
 											</div>
@@ -153,7 +153,7 @@ icon.addEventListener('click', () => {
 				</div>
 			</div>
 		</section>
-		<img src="{% static 'img/yup.png' %}"  width="300" height="600" style="position:absolute;margin-top:-17vh;margin-left:6%">
+		<img src="{% static 'img/yup.png' %}"  width="300" height="600" style="position:absolute;margin-top:-35vh;margin-left:6%">
 			<section class="feature-area pt-200 pb-130 levt">
 			<div class="container">
 				<div class="row">
@@ -164,65 +164,22 @@ icon.addEventListener('click', () => {
 						</div>
 					</div>
 				</div>
-						<div class="row gy-xl-3 gy-4">
-					<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp">
+					<div class="row gy-xl-3 gy-4 grid__s">
+					{% for i in mugallym.lectures.all %}
+					<div class="col-xl-3 col-md-6" style="width:100%;">
+						<div class="feature-card-widget wow fadeInUp" style="height:100%;">
 							<div class="card-img">
-								<img style="width:100%" src="https://img.freepik.com/free-vector/business-processes-organization-workforce-distribution-delegating-responsibilities-scheduling-planning-managerial-supervision-control-vector-isolated-concept-metaphor-illustration_335657-2780.jpg?w=740&t=st=1700541121~exp=1700541721~hmac=cab18caf771918fe19a88dbd6bc88b6be830f85eebf3fffecb88081d312336ca" alt="feature png">
+								<img style="width:auto;height:20vh" src="{{i.icon.url}}" alt="feature png">
 							</div>
-							<h4>Data structures and analysis</h4>
+							<h4 style="margin-top:3vh;margin-bottom:-6vh;width:100%;word-wrap: break-word;">{{i.name}}</h4>
 							<p>
 							</p>
 						</div>
 					</div>
-					<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp" data-wow-delay="0.3s">
-							<div class="card-img">
-								<img src="img/icon_2.png" alt="feature png">
-							</div>
-							<h4>Goshmacha göterim</h4>
-							<p>
-							</p>
-						</div>
-					</div>
-					<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp" data-wow-delay="0.6s">
-							<div class="card-img">
-								<img src="img/icon_3.png" alt="feature png">
-							</div>
-							<h4>Goshmacha gulp</h4>
-							<p>
-							</p>
-						</div>
-					</div>
-					<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp" data-wow-delay="0.9s">
-							<div class="card-img">
-								<img src="img/icon_4.png" alt="feature png">
-							</div>
-							<h4>Maya goyum</h4>
-							<p></p>
-						</div>
-					</div>
-										<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp" data-wow-delay="0.9s">
-							<div class="card-img">
-								<img src="img/icon_4.png" alt="feature png">
-							</div>
-							<h4>Maya goyum</h4>
-							<p></p>
-						</div>
-					</div>
-										<div class="col-xl-3 col-md-6">
-						<div class="feature-card-widget wow fadeInUp" data-wow-delay="0.9s">
-							<div class="card-img">
-								<img src="img/icon_4.png" alt="feature png">
-							</div>
-							<h4>Maya goyum</h4>
-							<p id="tablisa"></p>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
+			</div>
+			<div id="tablisa">
 			</div>
 		</section>
 
@@ -240,88 +197,37 @@ icon.addEventListener('click', () => {
     </tr>
   </thead>
   <tbody>
+  {% for i in daily %}
     <tr>
-      <th scope="row">Du</th>
-      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
+      	<th scope="row">
+		{% if forloop.counter == 1 %}
+			Du
+		{% elif forloop.counter == 2 %}
+			Si
+		{% elif forloop.counter == 3%}
+			Ça
+		{% elif forloop.counter == 4 %}
+			Pe
+		{% elif forloop.counter == 5%}
+			An
+		{% elif forloop.counter == 6 %}
+			Şe
+		{% endif %}
+		</th>
+      <td><h6 style="font-size:70%">Group: <a style="color:blue">{{i.group_1}}</a></h6>
+	  <h6 style="font-size:70%">Auditorium: <a style="color:red">{{i.auditorium_1}}</a></h6>
+	  <b>{{i.lecture_1}}</b>
 	  </td>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
+            <td><h6 style="font-size:70%">Group: <a style="color:blue">{{i.group_2}}</a></h6>
+	  <h6 style="font-size:70%">Auditorium: <a style="color:red">{{i.auditorium_2}}</a></h6>
+	  <b>{{i.lecture_2}}</b>
 	  </td>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-    </tr>
-    <tr>
-      <th scope="row">Si</th>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-    </tr>
-    <tr>
-      <th scope="row">Çar</th>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
+            <td><h6 style="font-size:70%">Group: <a style="color:blue">{{i.group_3}}</a></h6>
+	  <h6 style="font-size:70%">Auditorium: <a style="color:red">{{i.auditorium_3}}</a></h6>
+	  <b>{{i.lecture_3}}</b>
 	  </td>
     </tr>
-	    <tr>
-      <th scope="row">Pen</th>
-            <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-    </tr>
-    <tr>
-      <th scope="row">Anna</th>
-          <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-    </tr>
-    <tr>
-      <th scope="row">Şe</th>
-           <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>      <td><h6 style="font-size:70%">Group: <a style="color:blue">1234</a></h6>
-	  <h6 style="font-size:70%">Auditorium: <a style="color:red">3131</a></h6>
-	  <b>Data Structures and algorithms</b>
-	  </td>
-    </tr>
+	{% endfor %}
   </tbody>
 </table>
 <!--jasdkjgsdhkgjhsfkghsdk-->
@@ -335,93 +241,23 @@ icon.addEventListener('click', () => {
 						</div>
 					</div>
 				</div>
-				<div class="row gy-xl-0 gy-4">
-					<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
+				<div class="row gy-xl-0 gy-4 grid__s">
+				{% for i in video %}
+					<div class="col-xl-3 col-md-6" style="margin-bottom:10%; width:100%;">
+						<div class="feature-card-widget" style="height:100%;">
 							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
+								<img src="{{i.video_image.url}}" alt="feature png" style="width:100%">
+							 	<a href="{% url 'videoopen' mugallym.user.id i.id %}"><i class="bi bi-play"></i></a>
 							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
+							<div style="display: flex; justify-content: space-between; width:100%;">
+							<p style="text-align:left"><i class="bi bi-eye"></i>7676</p>
+							<p style="text-align:right">12:54</P>
+							</div><h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
 						</div>
 					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
-							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
-							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
-							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
-							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq">
-								<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							 	<i class="bi bi-play"></i>
-							</div>
-							<p style="margin-top:0vh;text-align:right">12:54</P>
-							<p style="margin-top:-5vh;text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>			
-			<a style="display: flex;justify-content: center;"><button type="button" class="btn btn-warning">Has köp wideo...</button></a>
+				{% endfor %}
 				</div>
+			<a style="display: flex;justify-content: center;"><button type="button" class="btn btn-warning">Has köp wideo...</button></a>
 			</div>
 		</section>
 		
@@ -434,64 +270,19 @@ gören arzuwyňyza pul tygşytlap biler.
 						</div>
 					</div>
 				</div>
-				<div class="row gy-xl-0 gy-4">
-					<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq1">
-							<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							  <i class="bi bi-book"></i>
+				<div class="row gy-xl-0 gy-4 grid__s">
+				{% for i in manuals %}
+					<div class="col-xl-3 col-md-6" style="margin-bottom:10%;width:100%">
+						<div class="feature-card-widget" style="height:100%">
+							<div class="iq">
+							<img src="{{i.manual_image.url}}" style="width:100%"></img>
+							  <a class="iq1" href={{i.manual.url}} target="_blank"><i class="bi bi-book"></i></a>
 							</div>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, sizgören arzuwyňyza pul tygşytlap biler.
+							<h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
 							</p>
 						</div>
 					</div>
-					<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq1">
-							<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							  <i class="bi bi-book"></i>
-							</div>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, sizgören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-					<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq1">
-							<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							  <i class="bi bi-book"></i>
-							</div>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, sizgören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq1">
-							<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							  <i class="bi bi-book"></i>
-							</div>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
-<div class="col-xl-3 col-md-6" style="margin-bottom:2%">
-						<div class="feature-card-widget">
-							<div class="iq1">
-							<img src="{% static 'img/4.PNG' %}" alt="feature png" style="width:229px">
-							  <i class="bi bi-book"></i>
-							</div>
-							<h4>Goshmacha tygshytlamalar</h4>
-							<p>Tygşytlamak bu meýilnama bilen aňsat we amatly bolýar. Stress we diňe basmak bilen, siz
-gören arzuwyňyza pul tygşytlap biler.
-							</p>
-						</div>
-					</div>
+				{% endfor %}
 				</div>
 			</div>
 		</section>

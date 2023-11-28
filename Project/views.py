@@ -1,8 +1,30 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,logout,login
 from django.shortcuts import render, redirect
 from .forms import Code_getter
+from .models import*
 
 def home(request):
+    if request.method=="POST":
+        form=Code_getter(request.POST)
+        if form.is_valid():
+            got=form.cleaned_data['barkod']
+            if len(str(got)) == 13:
+                try: 
+                    teacher=Teacher.objects.select_related("user").prefetch_related('lectures').select_related('degree').get(barkod_san=got)
+                except ObjectDoesNotExist:
+                    return render(request,'enter.html',{'bellik0':'Mugallym tapylmady, täzeden synanyşyň!','form':Code_getter})
+                return render(request,"index.html",{
+                    'mugallym':teacher,
+                    'video':Video.objects.filter(property=teacher.user.id),
+                    'manuals':Manual.objects.filter(property=teacher.user.id),
+                    'daily':Daily.objects.filter(property=teacher.user.id)
+                    })
+            return render(request,'enter.html',{"bellik0":'Barkod nädogry, täzeden synanyşyň!','form':Code_getter})
+        return render(request,'enter.html',{"bellik0":'Nädogry barkod görnüşi, barkodyňyzyň görnüşiniň dogrulygyny anyklaň!',"form":Code_getter})
+    return render(request,"enter.html",{'form':Code_getter})
+
+def enter(request):
     return render(request,"enter.html",{'form':Code_getter})
 
 def maglumat(request):
@@ -25,3 +47,8 @@ def loginuser(request):
 def logoutuser(request):
     logout(request)
     return redirect('login')
+
+def videoopen(request,user_id,video_id):
+    wideo=Video.objects.filter(property=user_id)
+    print(wideo[video_id].title)
+    return render(request,"video.html",{"video_open":wideo[video_id]})
