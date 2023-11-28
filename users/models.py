@@ -11,7 +11,7 @@ class User(AbstractUser):
     degree = models.ForeignKey("Project.Degree",on_delete=models.CASCADE,related_name="Degree_for_teachers",verbose_name="Mugallym derejesi",default=1)
     department = models.ForeignKey("Project.Department",on_delete=models.CASCADE,related_name="Department_for_teachers",verbose_name="Mugallym kafedrasy",default=1)
     lectures = models.ManyToManyField("Project.Lecture",verbose_name="Mugallym okatýan dersleri",default=1)
-    barkod_san = models.DecimalField(max_digits=13,decimal_places=0,default=1,verbose_name="Mugallym barkod nomeri",blank=True)
+    barkod_san = models.DecimalField(max_digits=13,decimal_places=0,default=1,verbose_name="Mugallym barkod kody",blank=True)
     barkod_surat = models.ImageField(upload_to='barcode_img/',blank=True,verbose_name="Mugallym barkod suraty")
 
     def __str__(self):
