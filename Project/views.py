@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,logout,login
 from django.shortcuts import render, redirect
 from .forms import Code_getter
 from .models import*
+from users.models import *
 
 def home(request):
     if request.method=="POST":
@@ -11,18 +12,18 @@ def home(request):
             got=form.cleaned_data['barkod']
             if len(str(got)) == 13:
                 try: 
-                    teacher=Teacher.objects.select_related("user").prefetch_related('lectures').select_related('degree').get(barkod_san=got)
+                    teacher=User.objects.select_related("department").prefetch_related('lectures').select_related('degree').get(barkod_san=got)
                 except ObjectDoesNotExist:
                     return render(request,'enter.html',{'bellik0':'Mugallym tapylmady, täzeden synanyşyň!','form':Code_getter})
                 return render(request,"index.html",{
                     'mugallym':teacher,
-                    'video':Video.objects.filter(property=teacher.user.id),
-                    'manuals':Manual.objects.filter(property=teacher.user.id),
-                    'daily':Daily.objects.filter(property=teacher.user.id)
+                    'video':Video.objects.filter(property=teacher.id),
+                    'manuals':Manual.objects.filter(property=teacher.id),
+                    'daily':Daily.objects.filter(property=teacher.id)
                     })
             return render(request,'enter.html',{"bellik0":'Barkod nädogry, täzeden synanyşyň!','form':Code_getter})
         return render(request,'enter.html',{"bellik0":'Nädogry barkod görnüşi, barkodyňyzyň görnüşiniň dogrulygyny anyklaň!',"form":Code_getter})
-    return render(request,"enter.html",{'form':Code_getter})
+    return redirect('/')
 
 def enter(request):
     return render(request,"enter.html",{'form':Code_getter})
@@ -50,5 +51,11 @@ def logoutuser(request):
 
 def videoopen(request,user_id,video_id):
     wideo=Video.objects.filter(property=user_id)
-    print(wideo[video_id].title)
-    return render(request,"video.html",{"video_open":wideo[video_id]})
+    new_collection_wideo=[]
+    one_wideo=[]
+    for i in wideo:
+        if i.id!=video_id:
+            new_collection_wideo.append(i)
+        elif i.id==video_id:
+            one_wideo.append(i)
+    return render(request,"video.html",{"video_open":one_wideo,"wideo_open":new_collection_wideo,'mugallym':user_id})

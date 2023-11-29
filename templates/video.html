@@ -43,19 +43,43 @@ icon.addEventListener('click', () => {
 	</script>
         {% include "navbar.html" %}
         <main>
-        <style>
-        
-        </style>
-    <section class="demo-section demo-section--light" id="demo">
+		{% for i in video_open %}
+		<h2 class="title heading">{{i.title}}</h2>
+    <section style="margin-top:-6vh" class="demo-section demo-section--light" id="demo">
         <div class="container">
-            <h2 class="title heading">Custom HTML5 Video Player with Ckins...</h2>
-            <video poster="ckin.jpg" src="{{video_open.video.url}}" data-ckin="default" data-overlay="1"></video>
-            <p class="tr">Demo video by
-                <a href="https://vimeo.com/lumatic" target="_blank">Lumatic</a>
-            </p>
+            <video class="video-poster" poster="{{i.video_image.url}}" src="{{i.video.url}}" data-ckin="default" data-overlay="1"></video>
         </div>
     </section>
-    <script src="dist/js/ckin.js"></script>
+	{% endfor %}
+
+			<section class="feature-area pt-11 pb-130" style="margin-top:-10vh" id="featureq">
+			<div style="padding:5vw">
+				<div class="row">
+					<div class="col-lg-6 mx-auto pt-160 pt-lg-90 pb-65">
+						<div class="section-title">
+							<h2 class="wow fadeInUp">Mugallymyň wideo sapaklary</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row gy-xl-0 gy-4 grid__s">
+				{% for i in wideo_open %}
+					<div class="col-xl-3 col-md-6" style="margin-bottom:10%; width:100%;">
+						<div class="feature-card-widget" style="height:100%;">
+							<div class="iq">
+								<img src="{{i.video_image.url}}" alt="feature png" style="width:100%">
+							 	<a href="{% url 'videoopen' mugallym i.id %}"><i class="bi bi-play"></i></a>
+							</div>
+							<div style="display: flex; justify-content: space-between; width:100%;">
+							<p style="text-align:left"><i class="bi bi-eye"></i>7676</p>
+							<p style="text-align:right">12:54</P>
+							</div><h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			<a style="display: flex;justify-content: center;"><button type="button" class="btn btn-warning">Has köp wideo...</button></a>
+			</div>
+		</section>
         </main>
 	<!-- footer -->
 	<footer class="footer footer-1" id="footer">
@@ -87,5 +111,6 @@ icon.addEventListener('click', () => {
 
 	<!-- Back to top button -->
 	<a id="back-to-top" title="Back to Top"></a>
+    <script type="text/javascript" src="{% static 'js/ckin.js' %}"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@ icon.addEventListener('click', () => {
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-11 mx-auto">
-							<div class="pt-150">
+							<div class="pt-120">
 							<div class="skills__container grid">
 								<!-- ================= -->
 								<div class="home__social zented" style="margin-left:-16vw;position:fixed;">
@@ -94,7 +94,7 @@ icon.addEventListener('click', () => {
 								<!-- ================= -->
 								<div class="border">
 									<div class="frame">
-									<img class="image" src="{{mugallym.teacher_image.url}}"  width="175" height="233">
+									<img class="image" src="{{mugallym.avatar.url}}"  width="175" height="233">
 								</div>
 								</div>
 									<div class="skills__content">
@@ -106,7 +106,7 @@ icon.addEventListener('click', () => {
 												<div class="skills__data">
 													<i class="bx bxs-badge-check"></i>
 													<div>
-														<h3 class="skills__name qwerty2">{{mugallym.ady_fam}}</h3>
+														<h3 class="skills__name qwerty2">{{mugallym.first_name}} {{mugallym.last_name}}</h3>
 													</div>
 												</div>
 											</div>
@@ -153,7 +153,7 @@ icon.addEventListener('click', () => {
 				</div>
 			</div>
 		</section>
-		<img src="{% static 'img/yup.png' %}"  width="300" height="600" style="position:absolute;margin-top:-35vh;margin-left:6%">
+		<img src="{% static 'img/yup.png' %}"  width="200" height="600" style="position:absolute;margin-top:-35vh;margin-left:6%">
 			<section class="feature-area pt-200 pb-130 levt">
 			<div class="container">
 				<div class="row">
@@ -247,7 +247,7 @@ icon.addEventListener('click', () => {
 						<div class="feature-card-widget" style="height:100%;">
 							<div class="iq">
 								<img src="{{i.video_image.url}}" alt="feature png" style="width:100%">
-							 	<a href="{% url 'videoopen' mugallym.user.id i.id %}"><i class="bi bi-play"></i></a>
+							 	<a href="{% url 'videoopen' mugallym.id i.id %}"><i class="bi bi-play"></i></a>
 							</div>
 							<div style="display: flex; justify-content: space-between; width:100%;">
 							<p style="text-align:left"><i class="bi bi-eye"></i>7676</p>

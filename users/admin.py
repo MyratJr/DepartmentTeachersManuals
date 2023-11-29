@@ -5,6 +5,8 @@ from .models import *
 
 class PropertyDailyInline(admin.StackedInline):
     model = Daily
+    max_num = 6
+    min_num = 6
 
 
 class PropertyVideoInline(admin.StackedInline):
@@ -41,6 +43,8 @@ class PropertyAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         if request.user.is_superuser:
             if "user_permissions" not in self.fields:
+                print(type(self.fields))
+                print(type(self.extra_fields))
                 self.fields = self.fields + self.extra_fields
             return super().get_queryset(request)
         new_tuple = remove_item_from_tuple(self.fields, self.extra_fields)

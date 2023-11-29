@@ -10,7 +10,7 @@
 					<a class="navbar-brand sticky_logo" href="https://etut.edu.tm/">
 						<img class="flip-icon" src="{% static 'img/Logo1.png' %}" alt="logo" width="70px">
 					</a>
-						<a class="theme-btn theme-btn-rounded-2" style="position:fixed;left:37%">"Oguz mugallym" otagy</a>
+						<a class="theme-btn theme-btn-rounded-2" style="left:37%;position:fixed">"Oguz mugallym" otagy</a>
                         <div>
                             {% if request.path != '/login' and not user.is_authenticated %} 
 						        <a class="theme-btn theme-btn-rounded-2" href="{% url 'login' %}">Icheri gir</a>
