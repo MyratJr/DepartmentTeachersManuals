@@ -17,7 +17,7 @@ def home(request):
                     return render(request,'enter.html',{'bellik0':'Mugallym tapylmady, täzeden synanyşyň!','form':Code_getter})
                 return render(request,"index.html",{
                     'mugallym':teacher,
-                    'video':Video.objects.filter(property=teacher.id),
+                    'videos':Video.objects.filter(property=teacher.id),
                     'manuals':Manual.objects.filter(property=teacher.id),
                     'daily':Daily.objects.filter(property=teacher.id)
                     })
@@ -45,9 +45,11 @@ def loginuser(request):
         else: print(4);return redirect('login')
     else: print(5);return render(request, 'login.html')
 
+
 def logoutuser(request):
     logout(request)
     return redirect('login')
+
 
 def videoopen(request,user_id,video_id):
     wideo=Video.objects.filter(property=user_id)
@@ -57,5 +59,7 @@ def videoopen(request,user_id,video_id):
         if i.id!=video_id:
             new_collection_wideo.append(i)
         elif i.id==video_id:
+            i.view=i.view+1
+            i.save()
             one_wideo.append(i)
     return render(request,"video.html",{"video_open":one_wideo,"wideo_open":new_collection_wideo,'mugallym':user_id})

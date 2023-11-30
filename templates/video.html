@@ -49,10 +49,14 @@ icon.addEventListener('click', () => {
         <div class="container">
             <video class="video-poster" poster="{{i.video_image.url}}" src="{{i.video.url}}" data-ckin="default" data-overlay="1"></video>
         </div>
+				<div style="display: flex; justify-content: space-between; width:100%;">
+		<p style="text-align:left;padding-left:16%;font-size:125%"><i class="bi bi-eye"></i>{{i.view}}</p>
+		<p style="text-align:right;padding-right:16%;font-size:125%">{{i.duration}}</P>
+		</div>
     </section>
 	{% endfor %}
 
-			<section class="feature-area pt-11 pb-130" style="margin-top:-10vh" id="featureq">
+			<section class="feature-area pt-11 pb-130" style="margin-top:-20vh" id="featureq">
 			<div style="padding:5vw">
 				<div class="row">
 					<div class="col-lg-6 mx-auto pt-160 pt-lg-90 pb-65">
@@ -70,14 +74,13 @@ icon.addEventListener('click', () => {
 							 	<a href="{% url 'videoopen' mugallym i.id %}"><i class="bi bi-play"></i></a>
 							</div>
 							<div style="display: flex; justify-content: space-between; width:100%;">
-							<p style="text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<p style="text-align:right">12:54</P>
+							<p style="text-align:left"><i class="bi bi-eye"></i>{{i.view}}</p>
+							<p style="text-align:right">{{i.duration}}</P>
 							</div><h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
 						</div>
 					</div>
 				{% endfor %}
 				</div>
-			<a style="display: flex;justify-content: center;"><button type="button" class="btn btn-warning">Has köp wideo...</button></a>
 			</div>
 		</section>
         </main>
@@ -88,10 +91,10 @@ icon.addEventListener('click', () => {
 				<a href="https://etut.edu.tm/"><img src="{% static 'img/Logo1.png' %}" class="flip-icon" alt="logo" width="100px"></a>
 			</div>
 			<div class="copyright wow fadeInUp" data-wow-delay="0.1s">
-				<p>Titu, Turkmenistan.</p>
+				<p class="make"> Titu, Turkmenistan.</p>
 			</div>
 			<div class="footer-text wow fadeInUp" data-wow-delay="0.5s">
-				<p>Sosial media programmalarymyza eýeriň:</p>
+				<p class="make">Sosial media programmalarymyza eýeriň:</p>
 			</div>
 			<div class="social-icon pt-10 wow fadeInUp" data-wow-delay="0.8s">
 				<a href="https://etut.edu.tm/" id="fb"><i class="bi bi-globe"></i></a>
@@ -99,12 +102,12 @@ icon.addEventListener('click', () => {
 				<a href="https://en.wikipedia.org/wiki/Oguzhan_University_of_Engineering_Technologies"><i class="bi bi-wikipedia"></i></a>
 			</div>
 			<div class="footer-text wow fadeInUp" style="margin-top:2vh" data-wow-delay="0.5s">
-				<p>100 Köşi Köçe, Aşgabat şäher, Türkmenistan</p>
+				<p class="make">100 Köşi Köçe, Aşgabat şäher, Türkmenistan</p>
 			</div>
 		</div>			
 		<!-- copyright area -->
 		<div class="copyright pt-2 pb-3" id="copy" style="background-color:#212529">
-			<p>Awtorlyk hukugy; 2023. Titu, Turkmenistan.</p>
+			<p class="make">Awtorlyk hukugy; 2023. Titu, Turkmenistan.</p>
 		</div>
 	</footer>
 	<!-- footer end -->

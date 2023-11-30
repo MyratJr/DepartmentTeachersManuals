@@ -1,10 +1,10 @@
+import datetime
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from io import BytesIO
 from barcode.writer import ImageWriter
 from django.core.files import File
 import barcode
-
 
 class User(AbstractUser):
     avatar = models.ImageField(upload_to="images",verbose_name="Mugallym şahsy suraty")
@@ -28,11 +28,15 @@ class User(AbstractUser):
         self.barkod_surat.save(str(self.username)+'.jpg',File(buffer),save=False)
         return super().save(*args, **kwargs)
 
+
 class Video(models.Model):
     property=models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     title=models.CharField(max_length=100,blank=True)
     video=models.FileField(upload_to="videos",verbose_name="Wideo")
     video_image=models.ImageField(upload_to="video_images",verbose_name="Wideo daşky suraty")
+    view=models.IntegerField(default=0)
+    duration=models.DurationField(default=datetime.timedelta(seconds=0))
+
 
     class Meta:
         verbose_name_plural = 'Mugallymyň wideo sapaklary'

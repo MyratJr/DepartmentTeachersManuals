@@ -153,7 +153,11 @@ icon.addEventListener('click', () => {
 				</div>
 			</div>
 		</section>
-		<img src="{% static 'img/yup.png' %}"  width="200" height="600" style="position:absolute;margin-top:-35vh;margin-left:6%">
+		{% if mugallym.lectures.all|length >= 5  %}	
+			<img src="{% static 'img/yup.png' %}"  width="300" height="600" style="position:absolute;margin-top:-25vh;margin-left:6%">
+		{% else %}
+			<img src="{% static 'img/yup.png' %}"  width="200" height="400" style="position:absolute;margin-top:-25vh;margin-left:12%">
+		{% endif %}
 			<section class="feature-area pt-200 pb-130 levt">
 			<div class="container">
 				<div class="row">
@@ -232,17 +236,17 @@ icon.addEventListener('click', () => {
 </table>
 <!--jasdkjgsdhkgjhsfkghsdk-->
 
-		<section class="feature-area pt-11 pb-130" style="margin-top:-10vh" id="featureq">
+		<section class="feature-area pt-11 pb-130" id="featureq">
 			<div style="padding:5vw">
 				<div class="row">
-					<div class="col-lg-6 mx-auto pt-160 pt-lg-90 pb-65">
+					<div class="col-lg-12 pt-160 pt-lg-40 pb-45">
 						<div class="section-title">
 							<h2 class="wow fadeInUp">Mugallymyň wideo sapaklary</h2>
 						</div>
 					</div>
 				</div>
 				<div class="row gy-xl-0 gy-4 grid__s">
-				{% for i in video %}
+				{% for i in videos %}
 					<div class="col-xl-3 col-md-6" style="margin-bottom:10%; width:100%;">
 						<div class="feature-card-widget" style="height:100%;">
 							<div class="iq">
@@ -250,14 +254,13 @@ icon.addEventListener('click', () => {
 							 	<a href="{% url 'videoopen' mugallym.id i.id %}"><i class="bi bi-play"></i></a>
 							</div>
 							<div style="display: flex; justify-content: space-between; width:100%;">
-							<p style="text-align:left"><i class="bi bi-eye"></i>7676</p>
-							<p style="text-align:right">12:54</P>
+							<p style="text-align:left"><i class="bi bi-eye"></i>{{i.view}}</p>
+							<p style="text-align:right">{{i.duration}}</P>
 							</div><h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
 						</div>
 					</div>
 				{% endfor %}
 				</div>
-			<a style="display: flex;justify-content: center;"><button type="button" class="btn btn-warning">Has köp wideo...</button></a>
 			</div>
 		</section>
 		
@@ -276,7 +279,7 @@ icon.addEventListener('click', () => {
 						<div class="feature-card-widget" style="height:100%">
 							<div class="iq">
 							<img src="{{i.manual_image.url}}" style="width:100%"></img>
-							  <a class="iq1" href={{i.manual.url}} target="_blank"><i class="bi bi-book"></i></a>
+							  <a class="iq1" href="ms-notepad:ofe|file={{i.manual.url}}" target="_blank"><i class="bi bi-book"></i></a>
 							</div>
 							<h4 style='margin-bottom:-10%;width:100%;word-wrap: break-word;'>{{i.title}}</h4>
 							</p>
